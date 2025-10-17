@@ -74,7 +74,7 @@ export default function Login() {
         });
         
         if (!emailError && !passwordError && !acceptedError) {
-            navigate("/Success");
+            navigate("/success");
         }
 
         const isFormValid = !validateEmail(email) && !validatePassword(password) && !validateAccepted(accepted);
@@ -83,28 +83,54 @@ export default function Login() {
     }
     return (
        
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="email">E-posta</label>
+        <div className="page">
+            <form onSubmit={handleSubmit} className="card form" style={{
+    display: "flex",
+    flexDirection: "column",
+    width: "300px",
+    margin: "80px auto",
+    gap: "12px",
+  }}>
+            <div className="field">
+                <label htmlFor="email">E-posta</label>
             <input 
             id="email"
             onChange={handleEmailChange} 
             type="email" 
             value={email}
             placeholder="e-mail"
+            style={{
+            padding: "8px",
+            border: "1px solid #ccc",
+            borderRadius: "6px",
+  }}
              />
-             {error.email && <p role="alert">{error.email}</p>}
+             {error.email && <p style={{ color: "red", fontSize: "14px", margin: "0" }} role="alert">{error.email}</p>}
+            </div>
 
-            <label htmlFor="password">Şifre</label>
+            <div className="field">
+                <label htmlFor="password">Şifre</label>
             <input 
             id="password"
             onChange={handlePasswordChange} 
             type="password" 
             value={password}
             placeholder="password"
+            style={{
+            padding: "8px",
+            border: "1px solid #ccc",
+            borderRadius: "6px",
+  }}
             />
-            {error.password && <p role="alert">{error.password}</p>}
+            {error.password && <p style={{ color: "red", fontSize: "14px", margin: "0" }} role="alert">{error.password}</p>}
+            </div>
 
-            <label >
+            <div className="field checkbox">
+                <label style={{
+    display: "flex",
+    alignItems: "center",
+    gap: "6px",
+  }}>
             <input 
             id="accepted"
             onChange={handleAcceptedChange} 
@@ -113,10 +139,21 @@ export default function Login() {
             />
             Şartları kabul ediyorum
             </label>
-            {error.accepted && <p role="alert">{error.accepted}</p>}
+            {error.accepted && <p style={{ color: "red", fontSize: "14px", margin: "0" }} role="alert">{error.accepted}</p>}
+            </div>
 
-            <button type="submit"> Kayıt Ol</button>
+            <div className="actions">
+                <button type="submit" style={{
+                padding: "10px",
+                backgroundColor: "#007bff",
+                color: "white",
+                border: "none",
+                borderRadius: "6px",
+                cursor: "pointer",
+  }}> Kayıt Ol</button>
+            </div>
         </form>
+        </div>
        
     )
 }
