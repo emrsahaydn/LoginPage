@@ -77,19 +77,20 @@ export default function Login() {
             navigate("/success");
         }
 
-        const isFormValid = !validateEmail(email) && !validatePassword(password) && !validateAccepted(accepted);
+        
 
 
     }
+    const isFormValid = !validateEmail(email) && !validatePassword(password) && !validateAccepted(accepted);
     return (
        
         <div className="page">
             <form onSubmit={handleSubmit} className="card form" style={{
-    display: "flex",
-    flexDirection: "column",
-    width: "300px",
-    margin: "80px auto",
-    gap: "12px",
+            display: "flex",
+            flexDirection: "column",
+            width: "300px",
+            margin: "80px auto",
+            gap: "12px",
   }}>
             <div className="field">
                 <label htmlFor="email">E-posta</label>
@@ -127,9 +128,9 @@ export default function Login() {
 
             <div className="field checkbox">
                 <label style={{
-    display: "flex",
-    alignItems: "center",
-    gap: "6px",
+            display: "flex",
+            alignItems: "center",
+            gap: "6px",
   }}>
             <input 
             id="accepted"
@@ -143,7 +144,10 @@ export default function Login() {
             </div>
 
             <div className="actions">
-                <button type="submit" style={{
+                <button 
+                disabled={!isFormValid}
+                type="submit" 
+                style={{
                 padding: "10px",
                 backgroundColor: "#007bff",
                 color: "white",
