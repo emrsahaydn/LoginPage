@@ -77,31 +77,52 @@ export default function Login() {
             navigate("/Success");
         }
 
+        const isFormValid = !validateEmail(email) && !validatePassword(password) && !validateAccepted(accepted);
+
+
     }
     return (
        
         <form onSubmit={handleSubmit}>
+            <label htmlFor="email">E-posta</label>
             <input 
+            id="email"
             onChange={handleEmailChange} 
             type="email" 
             value={email}
             placeholder="e-mail"
              />
+             {error.email && <p role="alert">{error.email}</p>}
+
+            <label htmlFor="password">Şifre</label>
             <input 
+            id="password"
             onChange={handlePasswordChange} 
             type="password" 
             value={password}
             placeholder="password"
             />
+            {error.password && <p role="alert">{error.password}</p>}
+
+            <label >
             <input 
+            id="accepted"
             onChange={handleAcceptedChange} 
             checked={accepted} 
             type="checkbox" 
             />
+            Şartları kabul ediyorum
+            </label>
+            {error.accepted && <p role="alert">{error.accepted}</p>}
+
+            <button type="submit"> Kayıt Ol</button>
         </form>
        
     )
 }
+
+
+                                
   
   
 
